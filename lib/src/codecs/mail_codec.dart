@@ -99,6 +99,7 @@ abstract class MailCodec {
     'koi8': () => const Koi8rCodec(allowInvalid: true),
     'koi8-r': () => const Koi8rCodec(allowInvalid: true),
     'koi8-u': () => const Koi8uCodec(allowInvalid: true),
+    'iso-2022-jp': () => const Iso2022JpCodec(allowInvalid: true),
     'us-ascii': () => encodingAscii,
     'ascii': () => encodingAscii,
   };
