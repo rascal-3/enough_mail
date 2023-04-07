@@ -1426,6 +1426,8 @@ class MessageBuilder extends PartBuilder {
   /// Retrieves the codec for the specified [characterSet].
   static Codec getCodec(CharacterSet? characterSet) {
     switch (characterSet) {
+      case CharacterSet.iso2022jp:
+        return iso2022jp.iso2022jp;
       case null:
         return utf8;
       case CharacterSet.ascii:
@@ -1434,8 +1436,6 @@ class MessageBuilder extends PartBuilder {
         return utf8;
       case CharacterSet.latin1:
         return latin1;
-      case CharacterSet.iso2022jp:
-        return iso2022jp.iso2022jp;
     }
   }
 
