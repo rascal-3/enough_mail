@@ -183,7 +183,7 @@ class QuotedPrintableMailCodec extends MailCodec {
   String decodeText(final String part, final Encoding codec,
       {bool isHeader = false}) {
     // TODO: Added this print
-    print('codec: $codec');
+    print('codec: $codec in message_builder#decodeText()');
     final buffer = StringBuffer();
     // remove all soft-breaks:
     final cleaned = part.replaceAll('=\r\n', '');
@@ -198,6 +198,9 @@ class QuotedPrintableMailCodec extends MailCodec {
           buffer.write(hexText);
         } else {
           final charCodes = [charCode];
+          // TODO: Added this print
+          print('cleaned: [$cleaned]: '
+              'hex code: [$hexText] at $i... charCodes: $charCodes');
           while (cleaned.length > (i + 4) && cleaned[i + 3] == '=') {
             i += 3;
             final hexText = cleaned.substring(i + 1, i + 3);
@@ -207,6 +210,8 @@ class QuotedPrintableMailCodec extends MailCodec {
 
           try {
             final decoded = codec.decode(charCodes);
+            // TODO: Added this print
+            print('decoded: $decoded, charCodes: $charCodes');
             buffer.write(decoded);
           } on FormatException catch (err) {
             print('unable to decode quotedPrintable buffer: ${err.message}');
