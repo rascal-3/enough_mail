@@ -178,6 +178,8 @@ class QuotedPrintableMailCodec extends MailCodec {
   @override
   String decodeText(final String part, final Encoding codec,
       {bool isHeader = false}) {
+    // TODO: Added this print
+    print('codec: $codec');
     final buffer = StringBuffer();
     // remove all soft-breaks:
     final cleaned = part.replaceAll('=\r\n', '');
