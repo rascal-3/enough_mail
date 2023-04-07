@@ -4,6 +4,7 @@ import 'dart:math' as math;
 import 'dart:typed_data';
 
 import 'package:intl/intl.dart';
+import 'package:enough_convert/iso_2022_jp.dart' as iso2022jp;
 
 import 'codecs/date_codec.dart';
 import 'codecs/mail_codec.dart';
@@ -45,7 +46,10 @@ enum CharacterSet {
   utf8,
 
   /// latin-1 text
-  latin1
+  latin1,
+
+  /// ISO-2022-JP
+  iso2022jp,
 }
 
 /// The recipient
@@ -1430,6 +1434,8 @@ class MessageBuilder extends PartBuilder {
         return utf8;
       case CharacterSet.latin1:
         return latin1;
+      case CharacterSet.iso2022jp:
+        return iso2022jp.iso2022jp;
     }
   }
 
@@ -1460,6 +1466,8 @@ class MessageBuilder extends PartBuilder {
         return 'ascii';
       case CharacterSet.latin1:
         return 'latin1';
+      case CharacterSet.iso2022jp:
+        return 'iso-2022-jp';
     }
   }
 
