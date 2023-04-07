@@ -1732,6 +1732,8 @@ class ContentTypeHeader extends ParameterizedHeader {
   String render([StringBuffer? buffer]) {
     buffer ??= StringBuffer();
     buffer.write(value);
+    // TODO: Added this print
+    print('charset: $charset');
     renderField('charset', charset, buffer, quote: true);
     renderField('boundary', boundary, buffer, quote: true);
     if (isFlowedFormat == true) {
