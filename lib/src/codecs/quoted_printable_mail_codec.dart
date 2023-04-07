@@ -20,6 +20,8 @@ class QuotedPrintableMailCodec extends MailCodec {
   @override
   String encodeText(final String text,
       {Codec codec = MailCodec.encodingUtf8, bool wrap = true}) {
+    // TODO: Added this print
+    print('codec: $codec');
     final buffer = StringBuffer();
     final runes = List.from(text.runes);
     final runeCount = runes.length;
@@ -68,6 +70,8 @@ class QuotedPrintableMailCodec extends MailCodec {
   @override
   String encodeHeader(final String text,
       {int nameLength = 0, Codec codec = utf8, bool fromStart = false}) {
+    // TODO: Added this print
+    print('codec: $codec');
     final runes = List.from(text.runes, growable: false);
     var numberOfRunesAbove7Bit = 0;
     var startIndex = -1;
@@ -220,6 +224,8 @@ class QuotedPrintableMailCodec extends MailCodec {
   }
 
   int _writeQuotedPrintable(int rune, StringBuffer buffer, Codec codec) {
+    // TODO: Added this print
+    print('codec: $codec');
     List<int> encoded;
     if (rune < 128) {
       // this is 7 bit ASCII
@@ -244,6 +250,8 @@ class QuotedPrintableMailCodec extends MailCodec {
   ///
   /// Uses [_writeQuotedPrintable] internally.
   String _encodeQuotedPrintableChar(int rune, Codec codec) {
+    // TODO: Added this print
+    print('codec: $codec');
     final buffer = StringBuffer();
     _writeQuotedPrintable(rune, buffer, codec);
     return buffer.toString();
