@@ -205,6 +205,8 @@ class ModifiedUtf7Codec {
   ///
   /// [codec] the optional character encoding (charset, defaults to utf-8)
   String decodeText(String text, [Encoding codec = utf8]) {
+    // TODO: Added this print
+    print('codec: $codec in modified_utf7_codec#decedeText()');
     final decoded = StringBuffer();
     var shifted = false;
     var bits = 0, v = 0;

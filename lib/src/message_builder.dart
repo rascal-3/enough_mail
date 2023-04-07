@@ -3,8 +3,8 @@ import 'dart:io';
 import 'dart:math' as math;
 import 'dart:typed_data';
 
+import 'package:enough_convert/enough_convert.dart';
 import 'package:intl/intl.dart';
-import 'package:enough_convert/iso_2022_jp.dart' as iso2022jp;
 
 import 'codecs/date_codec.dart';
 import 'codecs/mail_codec.dart';
@@ -1433,7 +1433,7 @@ class MessageBuilder extends PartBuilder {
     print('characterSet: $characterSet');
     switch (characterSet) {
       case CharacterSet.iso2022jp:
-        return iso2022jp.iso2022jp;
+        return iso2022jp;
       case null:
         return utf8;
       case CharacterSet.ascii:

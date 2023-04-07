@@ -5,6 +5,8 @@ import '../mail_conventions.dart';
 import '../private/util/ascii_runes.dart';
 import 'mail_codec.dart';
 
+// import 'package:enough_mail/src/codecs/encoding.dart' as encoding;
+
 /// Provides quoted printable encoder and decoder.
 ///
 /// Compare https://tools.ietf.org/html/rfc2045#page-19 for details.
