@@ -201,8 +201,8 @@ class QuotedPrintableMailCodec extends MailCodec {
         } else {
           final charCodes = [charCode];
           // TODO: Added this print
-          print('cleaned: [$cleaned]: '
-              'hex code: [$hexText] at $i... charCodes: $charCodes in quoted_printable_mail_codec#decodeText()');
+          print(
+              'cleaned: [$cleaned]: hex code: [$hexText] at $i... charCodes: $charCodes in quoted_printable_mail_codec#decodeText()');
           while (cleaned.length > (i + 4) && cleaned[i + 3] == '=') {
             i += 3;
             final hexText = cleaned.substring(i + 1, i + 3);
