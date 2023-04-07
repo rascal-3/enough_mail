@@ -230,6 +230,7 @@ class PartBuilder {
   ///
   /// Optionally specify the [transferEncoding] which defaults to
   /// [TransferEncoding.automatic].
+  /// TODO: Modify to test!
   PartBuilder addText(String text,
       {MediaType? mediaType,
       TransferEncoding transferEncoding = TransferEncoding.automatic,
@@ -243,13 +244,17 @@ class PartBuilder {
       ..contentDisposition = disposition
       ..text = text;
     if (disposition?.disposition == ContentDisposition.attachment) {
+      // TODO: Added these lines
+      final codec = MessageBuilder.getCodec(characterSet);
+      print('coded: $codec');
       final info = AttachmentInfo(
           null,
           mediaType,
           disposition!.filename,
           disposition.size,
           disposition.disposition,
-          utf8.encode(text) as Uint8List,
+          // utf8.encode(text) as Uint8List,
+          codec.encode(text) as Uint8List,
           child);
       _attachments.add(info);
     }
