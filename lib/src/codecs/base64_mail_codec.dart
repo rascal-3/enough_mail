@@ -21,7 +21,7 @@ class Base64MailCodec extends MailCodec {
   String encodeText(String text,
       {Codec codec = MailCodec.encodingUtf8, bool wrap = true}) {
     // TODO: Added this print
-    print('codec: $codec');
+    print('codec: $codec in base64_mail_codec#encodeText()');
     final charCodes = codec.encode(text);
     return encodeData(charCodes, wrap: wrap);
   }

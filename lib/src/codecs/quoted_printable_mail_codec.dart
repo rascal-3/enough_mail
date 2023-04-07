@@ -23,7 +23,7 @@ class QuotedPrintableMailCodec extends MailCodec {
   String encodeText(final String text,
       {Codec codec = MailCodec.encodingUtf8, bool wrap = true}) {
     // TODO: Added this print
-    print('codec: $codec');
+    print('codec: $codec in quoted_printable_mail_codec#encodeText()');
     final buffer = StringBuffer();
     final runes = List.from(text.runes);
     final runeCount = runes.length;
@@ -73,7 +73,7 @@ class QuotedPrintableMailCodec extends MailCodec {
   String encodeHeader(final String text,
       {int nameLength = 0, Codec codec = utf8, bool fromStart = false}) {
     // TODO: Added this print
-    print('codec: $codec');
+    print('codec: $codec in quoted_printable_mail_codec#encodeHeader()');
     final runes = List.from(text.runes, growable: false);
     var numberOfRunesAbove7Bit = 0;
     var startIndex = -1;
@@ -185,7 +185,7 @@ class QuotedPrintableMailCodec extends MailCodec {
   String decodeText(final String part, final Encoding codec,
       {bool isHeader = false}) {
     // TODO: Added this print
-    print('codec: $codec in message_builder#decodeText()');
+    print('codec: $codec in  in quoted_printable_mail_codec#decodeText()');
     final buffer = StringBuffer();
     // remove all soft-breaks:
     final cleaned = part.replaceAll('=\r\n', '');
@@ -202,7 +202,7 @@ class QuotedPrintableMailCodec extends MailCodec {
           final charCodes = [charCode];
           // TODO: Added this print
           print('cleaned: [$cleaned]: '
-              'hex code: [$hexText] at $i... charCodes: $charCodes');
+              'hex code: [$hexText] at $i... charCodes: $charCodes in quoted_printable_mail_codec#decodeText()');
           while (cleaned.length > (i + 4) && cleaned[i + 3] == '=') {
             i += 3;
             final hexText = cleaned.substring(i + 1, i + 3);
@@ -213,7 +213,8 @@ class QuotedPrintableMailCodec extends MailCodec {
           try {
             final decoded = codec.decode(charCodes);
             // TODO: Added this print
-            print('decoded: $decoded, charCodes: $charCodes');
+            print(
+                'decoded: $decoded, charCodes: $charCodes in  in quoted_printable_mail_codec#decodeText()');
             buffer.write(decoded);
           } on FormatException catch (err) {
             print('unable to decode quotedPrintable buffer: ${err.message}');
@@ -232,7 +233,8 @@ class QuotedPrintableMailCodec extends MailCodec {
 
   int _writeQuotedPrintable(int rune, StringBuffer buffer, Codec codec) {
     // TODO: Added this print
-    print('codec: $codec');
+    print(
+        'codec: $codec in quoted_printable_mail_codec#_writeQuotedPrintable()');
     List<int> encoded;
     if (rune < 128) {
       // this is 7 bit ASCII
@@ -258,7 +260,8 @@ class QuotedPrintableMailCodec extends MailCodec {
   /// Uses [_writeQuotedPrintable] internally.
   String _encodeQuotedPrintableChar(int rune, Codec codec) {
     // TODO: Added this print
-    print('codec: $codec');
+    print(
+        'codec: $codec in quoted_printable_mail_codec#_encodeQuotedPrintableChar()');
     final buffer = StringBuffer();
     _writeQuotedPrintable(rune, buffer, codec);
     return buffer.toString();

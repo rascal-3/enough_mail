@@ -246,7 +246,7 @@ class PartBuilder {
     if (disposition?.disposition == ContentDisposition.attachment) {
       // TODO: Added these lines
       final codec = MessageBuilder.getCodec(characterSet);
-      print('codec: $codec');
+      print('codec: $codec in message_builder#addText()');
       final info = AttachmentInfo(
           null,
           mediaType,
