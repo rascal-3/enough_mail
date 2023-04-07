@@ -1405,11 +1405,13 @@ class MessageBuilder extends PartBuilder {
     switch (transferEncoding) {
       case TransferEncoding.quotedPrintable:
         // TODO: Added this print
+        print('characterSet: $characterSet');
         print('codec: ${getCodec(characterSet)}');
         return MailCodec.quotedPrintable
             .encodeText(text, codec: getCodec(characterSet));
       case TransferEncoding.base64:
         // TODO: Added this print
+        print('characterSet: $characterSet');
         print('codec: ${getCodec(characterSet)}');
         return MailCodec.base64.encodeText(text, codec: getCodec(characterSet));
       default:
