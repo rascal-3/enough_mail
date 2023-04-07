@@ -1425,6 +1425,7 @@ class MessageBuilder extends PartBuilder {
 
   /// Retrieves the codec for the specified [characterSet].
   static Codec getCodec(CharacterSet? characterSet) {
+    print('characterSet: $characterSet');
     switch (characterSet) {
       case CharacterSet.iso2022jp:
         return iso2022jp.iso2022jp;
