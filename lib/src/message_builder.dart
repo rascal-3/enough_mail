@@ -234,9 +234,13 @@ class PartBuilder {
   PartBuilder addText(String text,
       {MediaType? mediaType,
       TransferEncoding transferEncoding = TransferEncoding.automatic,
-      CharacterSet characterSet = CharacterSet.utf8,
+      // TODO: Modified this line
+      // CharacterSet characterSet = CharacterSet.utf8,
+      CharacterSet? characterSet,
       ContentDispositionHeader? disposition,
       bool insert = false}) {
+    // TODO: Added this line
+    characterSet ??= CharacterSet.utf8;
     mediaType ??= MediaSubtype.textPlain.mediaType;
     final child = addPart(insert: insert)
       ..setContentType(mediaType, characterSet: characterSet)
